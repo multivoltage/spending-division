@@ -40,11 +40,18 @@
   text-align: center;
   display: block !important; }
 
-.thing-container .ui.input {
+.things-container .ui.input {
   width: 100%; }
 
-.thing-container .title {
+.things-container .title {
   font-size: large;
-  text-align: center;
-  margin: 0;
-  padding: 0; }
+  text-align: center; }
+
+.things-container .partecipants {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  .things-container .partecipants .selectAll {
+    font-weight: bold; }
+  .things-container .partecipants .ui.checkbox {
+    margin-bottom: 1em; }

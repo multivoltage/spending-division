@@ -33,6 +33,7 @@ $tab-selected: #EEEEEE;
   padding-left: 15px;
   padding-right: 15px;
 }
+
 .thing-container,
 .inputs-people {
   display: flex;
@@ -58,5 +59,18 @@ $tab-selected: #EEEEEE;
   .title {
     font-size: large;
     text-align: center;
+  }
+
+  .partecipants {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .selectAll {
+      font-weight: bold;
+    }
+    .ui.checkbox {
+      margin-bottom: 1em;
+    }
   }
 }

@@ -11,7 +11,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      people: [{},{},{}],
+      people: [{name: 'Me'}],
       things: [{}],
       step: 1 // step + 1 = things[x]
     };
@@ -36,19 +36,24 @@ export default class App extends Component {
       );
 
     let selectedThing = this.state.things[this.state.step-1];
-    return (<ThingsContainer people={this.state.people} thing={selectedThing}/>);
+    return (<ThingsContainer people={this.state.people} thing={selectedThing} 
+                             handleThingChange={this.handleThingChange.bind(this)} 
+                             _index={this.state.step-1}
+                             handleSelectAll={this.handleSelectAll.bind(this)} />);
   }
 
-  handleThingChangePrice(price,index){
-    let thing = this.state.things[index];
-    thing.price = price;
-    this.setState({things: this.state.things});    
+  handleSelectAll(allSelected){
+    let people = Object.assign([], this.state.people);
+    people.forEach((p) => {
+      p.selected = allSelected;
+    });
+    this.setState({people: people});
   }
 
-  handleThingChangeName(name,index){
-    let thing = this.state.things[index];
-    thing.name = name;
-    this.setState({things: this.state.things});    
+  handleThingChange(thing,index){
+    let things = this.state.things;
+    things[index] = thing;
+    this.setState({things: things});    
   }
 
   handleEditName(index,name){

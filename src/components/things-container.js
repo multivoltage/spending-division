@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Input, Divider } from 'semantic-ui-react';
-import Thing from './thing.js';
+import { Container, Input, Divider, Checkbox } from 'semantic-ui-react';
+import PartecipantChooser from './partecipant-chooser.js';
 
 export default class ThingsContainer extends Component {
 
@@ -13,23 +13,40 @@ export default class ThingsContainer extends Component {
     return (
       <Container className="things-container">
         <header>
-            <Input placeholder="thing..." value={this.props.thing.name} onChange={this.handleThingChangeName.bind(this,this.props.reactKey)}/>
-            <Input placeholder="price..." value={this.props.thing.price} type="number" onChange={this.handleThingChangePrice.bind(this,this.props.reactKey)}/>
+            <Input placeholder="thing..." value={this.props.thing.name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
+            <Input placeholder="price..." value={this.props.thing.price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
             <p className="title">PARTECIPANTS</p>
         </header>
         <Divider />
-        
+
+          <div className="partecipants">
+            <Checkbox className="selectAll" label="ALL" onChange={this.onChange.bind(this)}/>
+            {this.renderPartecipants()}
+          </div>
+
       </Container>
     );
   }
-  
-  handleThingChangeName(index,ctx){
-     let name = ctx.target.value;
-     this.props.handleThingChangeName(name,index);
+
+  onChange(ctx,data){
+    this.props.handleSelectAll(data.checked);
   }
 
-  handleThingChangePrice(index,ctx){
-    let price = +ctx.target.value;
-    this.props.handleThingChangePrice(price,index);
+  renderPartecipants(){
+    return this.props.people.map((people) => {
+      return (<PartecipantChooser people={people} />);
+    });
+  }
+
+  onThingChangeName(index,ctx){
+     let newThing = Object.assign({}, this.props.thing);
+     newThing.name = ctx.target.value;
+     this.props.handleThingChange(newThing,index);
+  }
+
+  onThingChangePrice(index,ctx){
+    let newThing = Object.assign({}, this.props.thing);
+    newThing.price = +ctx.target.value;
+    this.props.handleThingChange(newThing,index);
   }
 }
