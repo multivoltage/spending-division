@@ -10,11 +10,15 @@ export default class ThingsContainer extends Component {
 
 
   render() {
+    // putting this 2 lines invide Input' value attr, name did not change we step changed
+    let name = this.props.thing.name || "";
+    let price = this.props.thing.price || "";
+
     return (
       <Container className="things-container">
         <header>
-            <Input placeholder="thing..." value={this.props.thing.name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
-            <Input placeholder="price..." value={this.props.thing.price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
+            <Input placeholder="thing..." value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
+            <Input placeholder="price..." value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
             <p className="title">PARTECIPANTS</p>
         </header>
         <Divider />
