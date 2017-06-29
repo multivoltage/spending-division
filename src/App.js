@@ -4,8 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 import ButtonsNavigation from './components/buttons-navigations.js';
 import FormPeople from './components/form-people.js';
-import SingleThing from './components/single-thing.js';
-import Thing from './components/single-thing.js';
+import ThingsContainer from './components/things-container.js';
 
 export default class App extends Component {
 
@@ -14,7 +13,7 @@ export default class App extends Component {
     this.state = {
       people: [{},{},{}],
       things: [{}],
-      step: 1
+      step: 1 // step + 1 = things[x]
     };
   }
 
@@ -36,15 +35,14 @@ export default class App extends Component {
               handleEditName={this.handleEditName.bind(this)} />
       );
 
-    return this.renderThings();
+    let selectedThing = this.state.things[this.state.step-1];
+    return (<ThingsContainer people={this.state.people} thing={selectedThing}/>);
   }
 
-  renderThings(){
-    return this.state.things.map((thing,index) => {
-      return (<Thing key={index} thing={thing} reactKey={index}
-                     handleThingChangeName={this.handleThingChangeName.bind(this)}
-              />);
-    });
+  handleThingChangePrice(price,index){
+    let thing = this.state.things[index];
+    thing.price = price;
+    this.setState({things: this.state.things});    
   }
 
   handleThingChangeName(name,index){
@@ -72,6 +70,20 @@ export default class App extends Component {
   // next
   handleAction(direction){
     let current = this.state.step;
-    this.setState({step: direction === 'next' ? ++current : --current});
+    if(direction === 'prev'){
+      if(current === 0)
+        return;
+      
+      current--;
+      this.setState({step: current});
+
+    } else {
+      current++;
+      if(!this.state.things[current-1]){
+        let things = this.state.things.push({});
+        this.setState({thing: things, step: current});
+      } else 
+        this.setState({step: current});
+    }
   }
 }
