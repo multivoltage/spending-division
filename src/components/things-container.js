@@ -42,7 +42,7 @@ export default class ThingsContainer extends Component {
 
   renderPartecipants(){
     return this.props.people.map((people) => {
-      return (<PartecipantChooser people={people} thing={this.props.thing}/>);
+      return (<PartecipantChooser people={people} thing={this.props.thing} handleSelectSingle={this.props.handleSelectSingle.bind(this)}/>);
     });
   }
 

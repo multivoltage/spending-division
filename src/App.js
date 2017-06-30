@@ -39,6 +39,7 @@ export default class App extends Component {
     return (<ThingsContainer people={this.state.people} thing={selectedThing} 
                              handleThingChange={this.handleThingChange.bind(this)} 
                              _index={this.state.step-1}
+                             handleSelectSingle={this.handleSelectSingle.bind(this)}
                              handleSelectAll={this.handleSelectAll.bind(this)} />);
   }
 
@@ -48,6 +49,20 @@ export default class App extends Component {
       thing.partecipants = allSelected ? this.state.people.map((p) => p.name) : []
     });
     this.setState({things: things});
+  }
+  
+  handleSelectSingle(isPartecipant, people){
+    let thing = Object.assign([],this.state.things).find((thing) => thing.name === people.name);
+    debugger;
+    if(!thing.partecipants.includes(people.name)){
+      thing.partecipants.push(people.name);
+    } else {
+      let index = thing.partecipants.indexOf(people.name);
+      if (index > -1)
+          thing.partecipants.splice(index, 1);
+    }
+    
+    debugger;
   }
 
   handleThingChange(thing,index){

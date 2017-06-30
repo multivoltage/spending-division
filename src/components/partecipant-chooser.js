@@ -9,11 +9,15 @@ export default class PartecipantChooser extends Component {
 
   render() {
     return (
-          <Checkbox label={this.props.people.name} checked={this.isPeoplePartecipant()} />
+          <Checkbox label={this.props.people.name} checked={this.isPeoplePartecipant()} onChange={this.onChange.bind(this)} />
     );
   }
 
   isPeoplePartecipant(){
     return this.props.thing.partecipants ? this.props.thing.partecipants.includes(this.props.people.name) : false;
+  }
+
+  onChange(ctx,data){
+    this.props.handleSelectSingle(data.checked,this.props.people);
   }
 }
