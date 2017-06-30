@@ -24,7 +24,7 @@ export default class ThingsContainer extends Component {
         <Divider />
 
           <div className="partecipants">
-            <Checkbox className="selectAll" label="ALL" onChange={this.onChange.bind(this)}/>
+            <Checkbox className="selectAll" label="ALL" onChange={this.onChange.bind(this)} checked={this.allPeoplePartecipants()}/>
             {this.renderPartecipants()}
           </div>
 
@@ -32,13 +32,17 @@ export default class ThingsContainer extends Component {
     );
   }
 
+  allPeoplePartecipants(){
+    return (this.props.people && this.props.thing && this.props.thing.partecipants) ? this.props.people.length === this.props.thing.partecipants.length : false;
+  }
+
   onChange(ctx,data){
-    this.props.handleSelectAll(data.checked);
+    this.props.handleSelectAll(data.checked,this.props._index);
   }
 
   renderPartecipants(){
     return this.props.people.map((people) => {
-      return (<PartecipantChooser people={people} />);
+      return (<PartecipantChooser people={people} thing={this.props.thing}/>);
     });
   }
 

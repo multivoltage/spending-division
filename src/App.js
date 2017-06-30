@@ -42,12 +42,12 @@ export default class App extends Component {
                              handleSelectAll={this.handleSelectAll.bind(this)} />);
   }
 
-  handleSelectAll(allSelected){
-    let people = Object.assign([], this.state.people);
-    people.forEach((p) => {
-      p.selected = allSelected;
+  handleSelectAll(allSelected,index){
+    let things = Object.assign([],this.state.things);
+    things.forEach((thing) => {
+      thing.partecipants = allSelected ? this.state.people.map((p) => p.name) : []
     });
-    this.setState({people: people});
+    this.setState({things: things});
   }
 
   handleThingChange(thing,index){
