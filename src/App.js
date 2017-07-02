@@ -12,7 +12,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       people: [{name: 'Me'}],
-      things: [{}],
+      things: [{partecipants:[]}],
       step: 1 // step + 1 = things[x]
     };
   }
@@ -51,18 +51,25 @@ export default class App extends Component {
     this.setState({things: things});
   }
   
-  handleSelectSingle(isPartecipant, people){
-    let thing = Object.assign([],this.state.things).find((thing) => thing.name === people.name);
-    debugger;
-    if(!thing.partecipants.includes(people.name)){
-      thing.partecipants.push(people.name);
+  handleSelectSingle(wantPartecipant, people,thing){
+    let thingCopy = Object.assign({},thing);
+    if(wantPartecipant){
+      // check if is not partecipant (shold not be happend :( )
+      if(!thingCopy.partecipants.find((p) => p === people.name)){
+        thingCopy.partecipants.push(people.name);
+      }
     } else {
-      let index = thing.partecipants.indexOf(people.name);
-      if (index > -1)
-          thing.partecipants.splice(index, 1);
+      // check if is name is present (shoud be present)
+      if(thingCopy.partecipants.find((p) => p === people.name)){
+        let index = thingCopy.partecipants.indexOf(people.name);
+        thingCopy.partecipants.splice(index, 1);        
+      }
     }
-    
-    debugger;
+
+    let index = this.state.things.indexOf(thing);
+    let thingsCopy = Object.assign([],this.state.things);
+    thingsCopy[index] = thingCopy;
+    this.setState({things: thingsCopy});
   }
 
   handleThingChange(thing,index){

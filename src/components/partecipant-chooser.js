@@ -18,6 +18,6 @@ export default class PartecipantChooser extends Component {
   }
 
   onChange(ctx,data){
-    this.props.handleSelectSingle(data.checked,this.props.people);
+    this.props.handleSelectSingle(data.checked,this.props.people,this.props.thing);
   }
 }
