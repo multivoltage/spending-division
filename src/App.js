@@ -11,7 +11,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      people: [{name: 'Me'}],
+      people: [{name: 'Me'},{name: 'Luca'},{name: 'Bho'}],
       things: [{partecipants:[]}],
       step: 1 // step + 1 = things[x]
     };
@@ -43,12 +43,14 @@ export default class App extends Component {
                              handleSelectAll={this.handleSelectAll.bind(this)} />);
   }
 
-  handleSelectAll(allSelected,index){
-    let things = Object.assign([],this.state.things);
-    things.forEach((thing) => {
-      thing.partecipants = allSelected ? this.state.people.map((p) => p.name) : []
-    });
-    this.setState({things: things});
+  handleSelectAll(allSelected,thing){
+    let thingCopy = Object.assign({},thing);
+    let index = this.state.things.indexOf(thing);
+
+    thingCopy.partecipants = allSelected ? this.state.people.map((p) => p.name) : [];
+    let thingsCopy = Object.assign([],this.state.things);
+    thingsCopy[index] = thingCopy;
+    this.setState({things: thingsCopy});
   }
   
   handleSelectSingle(wantPartecipant, people,thing){
@@ -107,7 +109,7 @@ export default class App extends Component {
     } else {
       current++;
       if(!this.state.things[current-1]){
-        let things = this.state.things.push({});
+        let things = this.state.things.push({partecipants: []});
         this.setState({thing: things, step: current});
       } else 
         this.setState({step: current});

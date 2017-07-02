@@ -33,11 +33,18 @@ export default class ThingsContainer extends Component {
   }
 
   allPeoplePartecipants(){
-    return (this.props.people && this.props.thing && this.props.thing.partecipants) ? this.props.people.length === this.props.thing.partecipants.length : false;
+    if(!this.props.people || (!this.props.thing && !this.props.thing.partecipants)){
+      return false;
+    }
+
+    let totalPeople = this.props.people.length;
+    let partecipants = this.props.thing.partecipants.length;
+    
+    return totalPeople === partecipants;
   }
 
   onChange(ctx,data){
-    this.props.handleSelectAll(data.checked,this.props._index);
+    this.props.handleSelectAll(data.checked,this.props.thing);
   }
 
   renderPartecipants(){
