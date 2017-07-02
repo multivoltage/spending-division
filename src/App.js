@@ -5,6 +5,7 @@ import './App.css';
 import ButtonsNavigation from './components/buttons-navigations.js';
 import FormPeople from './components/form-people.js';
 import ThingsContainer from './components/things-container.js';
+import Recap from './components/recap.js';
 import { Icon, Label } from 'semantic-ui-react';
 
 export default class App extends Component {
@@ -14,7 +15,8 @@ export default class App extends Component {
     this.state = {
       people: [{name: 'Me'},{name: 'Luca'},{name: 'Bho'}],
       things: [{partecipants:[]}],
-      step: 1 // step + 1 = things[x]
+      step: 1, // step + 1 = things[x],
+      showRecap: false
     };
   }
 
@@ -31,6 +33,10 @@ export default class App extends Component {
   }
 
   renderCorrectSection(){
+    if(this.state.showRecap){
+      return (<Recap people={this.state.people} things={this.state.things}/>);
+    }
+
     if(this.state.step === 0) // form people step
       return (
           <FormPeople people={this.state.people}
@@ -38,13 +44,15 @@ export default class App extends Component {
               removeLastPeople={this.removeLastPeople.bind(this)}
               handleEditName={this.handleEditName.bind(this)} />
       );
-
-    let selectedThing = this.state.things[this.state.step-1];
-    return (<ThingsContainer people={this.state.people} thing={selectedThing} 
-                             handleThingChange={this.handleThingChange.bind(this)} 
-                             _index={this.state.step-1}
-                             handleSelectSingle={this.handleSelectSingle.bind(this)}
-                             handleSelectAll={this.handleSelectAll.bind(this)} />);
+    
+    if(this.state.step > 0){
+      let selectedThing = this.state.things[this.state.step-1];
+      return (<ThingsContainer people={this.state.people} thing={selectedThing} 
+                              handleThingChange={this.handleThingChange.bind(this)} 
+                              _index={this.state.step-1}
+                              handleSelectSingle={this.handleSelectSingle.bind(this)}
+                              handleSelectAll={this.handleSelectAll.bind(this)} />);      
+    }
   }
 
   handleSelectAll(allSelected,thing){
@@ -110,13 +118,15 @@ export default class App extends Component {
       current--;
       this.setState({step: current});
 
-    } else {
+    } else if(direction === 'next'){
       current++;
       if(!this.state.things[current-1]){
         let things = this.state.things.push({partecipants: []});
         this.setState({thing: things, step: current});
       } else 
         this.setState({step: current});
+    } else if(direction === 'done'){
+      this.setState({showRecap: true});
     }
   }
 }

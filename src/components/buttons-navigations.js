@@ -15,6 +15,7 @@ export default class ButtonsNavigation extends Component {
         <Button.Group className="navigation-buttons">
           <Button className="prev" color="green" onClick={this.handlePrev.bind(this)}>PREV</Button>
           <Button className="next" color="red" onClick={this.handleNext.bind(this)} disabled={this.state.canNext}>NEXT</Button>
+          <Button className="done" color="blue" onClick={this.handleDone.bind(this)}>DONE</Button>  
         </Button.Group>
     );
   }
@@ -25,6 +26,10 @@ export default class ButtonsNavigation extends Component {
 
   handleNext(){
       this.props.handleAction('next');
+  }
+
+  handleDone(){
+    this.props.handleAction('done');
   }
   
 }
