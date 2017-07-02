@@ -5,6 +5,7 @@ import './App.css';
 import ButtonsNavigation from './components/buttons-navigations.js';
 import FormPeople from './components/form-people.js';
 import ThingsContainer from './components/things-container.js';
+import { Icon, Label } from 'semantic-ui-react';
 
 export default class App extends Component {
 
@@ -20,6 +21,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <Label className="things-counter">
+          THINGS: {this.state.things.length}
+        </Label>
         {this.renderCorrectSection()}            
         <ButtonsNavigation handleAction={this.handleAction.bind(this)}/>
       </div>
