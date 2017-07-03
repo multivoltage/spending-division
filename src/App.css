@@ -17,14 +17,13 @@
     transform: rotate(360deg); } }
 
 #root {
-  margin: .3em auto; }
+  margin: .3em auto;
+  margin-top: 0; }
 
 .navigation-buttons {
   bottom: 0;
   position: absolute;
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px; }
+  width: 100%; }
 
 .thing-container,
 .inputs-people {
@@ -43,10 +42,15 @@
 .things-counter {
   margin-left: 1em !important;
   margin-right: 1em !important;
-  margin-bottom: 1em !important; }
+  margin-bottom: 1em !important;
+  margin-top: 1em !important; }
 
 .things-container .ui.input {
   width: 100%; }
+
+.things-container .price {
+  margin-top: .5em;
+  margin-bottom: .5em; }
 
 .things-container .title {
   font-size: large;
@@ -60,3 +64,31 @@
     font-weight: bold; }
   .things-container .partecipants .ui.checkbox {
     margin-bottom: 1em; }
+
+.top-menu {
+  background: #009688;
+  height: 40px;
+  padding-left: 1em; }
+  .top-menu img {
+    height: 100%;
+    padding: .4em; }
+
+.sidebar-left {
+  top: 40px;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  margin-top: 40px;
+  background-color: #009688;
+  width: 60vw;
+  left: -60vw;
+  transition: all 0.5s ease-in-out; }
+  .sidebar-left.visible {
+    left: 0;
+    margin-top: 40px;
+    transition: all 0.5s ease-in-out; }
+  .sidebar-left p {
+    color: white;
+    border-bottom: 1px solid white;
+    margin: 0;
+    padding: 1em; }

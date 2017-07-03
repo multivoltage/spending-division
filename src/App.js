@@ -6,6 +6,7 @@ import ButtonsNavigation from './components/buttons-navigations.js';
 import FormPeople from './components/form-people.js';
 import ThingsContainer from './components/things-container.js';
 import Recap from './components/recap.js';
+import SidebarNavigation from './components/sidebar-navigation.js';
 import { Icon, Label } from 'semantic-ui-react';
 
 export default class App extends Component {
@@ -16,25 +17,37 @@ export default class App extends Component {
       people: [{name: 'Me'},{name: 'Luca'},{name: 'Bho'}],
       things: [{partecipants:[]}],
       step: 1, // step + 1 = things[x],
-      showRecap: false
+      showRecap: false,
+      sidebarVisible: false
     };
   }
 
   render() {
     return (
       <div>
+        <div className="top-menu">
+          <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_menu_white_24px.svg" 
+               onClick={this.handleSidebar.bind(this)} />
+        </div>
         <Label className="things-counter">
           THINGS: {this.state.things.length}
         </Label>
         {this.renderCorrectSection()}            
         <ButtonsNavigation handleAction={this.handleAction.bind(this)}/>
+        <SidebarNavigation things={this.state.things} 
+                           sidebarVisible={this.state.sidebarVisible}
+                           handleSelectThing={this.handleSelectThing.bind(this)}/>
       </div>
     );
   }
 
+  handleSidebar(){
+    this.setState({sidebarVisible: !this.state.sidebarVisible});
+  }
+
   renderCorrectSection(){
     if(this.state.showRecap){
-      return (<Recap people={this.state.people} things={this.state.things}/>);
+      return (<Recap people={this.state.people} things={this.state.things} handleCloseRecat={this.handleCloseRecat.bind(this)}/>);
     }
 
     if(this.state.step === 0) // form people step
@@ -128,5 +141,17 @@ export default class App extends Component {
     } else if(direction === 'done'){
       this.setState({showRecap: true});
     }
+  }
+
+  handleCloseRecat(){
+    this.setState({showRecap: false});
+  }
+
+  handleSelectThing(thing){
+    let index = this.state.things.indexOf(thing);
+    this.setState({
+      step: index+1,
+      sidebarVisible: false
+    });
   }
 }

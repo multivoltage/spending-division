@@ -17,8 +17,8 @@ export default class ThingsContainer extends Component {
     return (
       <Container className="things-container">
         <header>
-            <Input placeholder="thing..." value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
-            <Input placeholder="price..." value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
+            <Input className="name" placeholder="thing..." value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
+            <Input className="price" placeholder="price..." value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
             <p className="title">PARTECIPANTS</p>
         </header>
         <Divider />
@@ -48,8 +48,8 @@ export default class ThingsContainer extends Component {
   }
 
   renderPartecipants(){
-    return this.props.people.map((people) => {
-      return (<PartecipantChooser people={people} thing={this.props.thing} handleSelectSingle={this.props.handleSelectSingle.bind(this)}/>);
+    return this.props.people.map((people,index) => {
+      return (<PartecipantChooser key={index} people={people} thing={this.props.thing} handleSelectSingle={this.props.handleSelectSingle.bind(this)}/>);
     });
   }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Divider } from 'semantic-ui-react';
+import { Container, Divider, Icon } from 'semantic-ui-react';
 import Calculator from '.././utils.js';
 
 export default class Recap extends Component {
@@ -11,20 +11,25 @@ export default class Recap extends Component {
   render() {
     return (
         <Container>
+             <Icon size="big" name="close" onClick={this.handleCloseRecat.bind(this)} />
             {this.renderPeople()}
         </Container>
     );
   }
 
+  handleCloseRecat(){
+      this.props.handleCloseRecat();
+  }
+  
   renderPeople(){
-      return this.props.people.map((p) => {
-          return this.renderPeopleRecap(p);
+      return this.props.people.map((p,index) => {
+          return this.renderPeopleRecap(index,p);
       })
   }  
 
-  renderPeopleRecap(p){
+  renderPeopleRecap(index,p){
       return (
-          <p>{p.name} {Calculator.AmountForPeople(this.props.things,p)}</p>
+          <p key={index}>{p.name} {Calculator.AmountForPeople(this.props.things,p)}</p>
       );
   }
 }
