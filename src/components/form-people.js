@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Input, Divider, Button } from 'semantic-ui-react';
+import { Container, Input, Divider } from 'semantic-ui-react';
+import FlatButton from 'material-ui/FlatButton';
+import Paper from 'material-ui/Paper';
 
 export default class FormPeople extends Component {
 
@@ -9,18 +11,18 @@ export default class FormPeople extends Component {
 
   render() {
     return (
-        <Container>
-            <Button.Group className="counter-choser">
-                <Button className="prev" color="green" onClick={this.increment.bind(this,1)}>+</Button>
-                <Button disabled>{this.props.people.length}</Button>
-                <Button className="next" color="red" onClick={this.increment.bind(this,-1)}>-</Button>
-            </Button.Group>
+        <div className="people-container">
+            <section className="counter-choser">
+                <FlatButton backgroundColor label="ADD PEOPLE" onClick={this.increment.bind(this,1)}/>
+                <FlatButton disbled="true" disableTouchRipple="true" label={this.props.people.length} />
+                <FlatButton label="REMOVE PEOPLE" onClick={this.increment.bind(this,-1)} />
+            </section>
             
             <div className="inputs-people">
                 {this.renderInputs()} 
             </div>   
             
-        </Container>
+        </div>
     );
   } 
 

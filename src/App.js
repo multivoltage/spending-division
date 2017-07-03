@@ -1,3 +1,4 @@
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import React, { Component } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
@@ -8,6 +9,9 @@ import ThingsContainer from './components/things-container.js';
 import Recap from './components/recap.js';
 import SidebarNavigation from './components/sidebar-navigation.js';
 import { Icon, Label } from 'semantic-ui-react';
+import Paper from 'material-ui/Paper';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
 
 export default class App extends Component {
 
@@ -16,28 +20,32 @@ export default class App extends Component {
     this.state = {
       people: [{name: 'Me'},{name: 'Luca'},{name: 'Bho'}],
       things: [{partecipants:[]}],
-      step: 1, // step + 1 = things[x],
+      step: 0, // step + 1 = things[x],
       showRecap: false,
       sidebarVisible: false
     };
+    injectTapEventPlugin();
   }
 
   render() {
+
+    const titleAppBar = this.state.showRecap ? "Recap" : this.state.step === 0 ? "People" : "Things "+this.state.step;
+
     return (
-      <div>
-        <div className="top-menu">
-          <img src="https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_menu_white_24px.svg" 
-               onClick={this.handleSidebar.bind(this)} />
+      <MuiThemeProvider>
+      
+        <div>
+          <AppBar className="top-menu" title={titleAppBar} onLeftIconButtonTouchTap={this.handleSidebar.bind(this)}>
+          </AppBar>
+          <section className="section-container" zDepth={2}>
+             {this.renderCorrectSection()}     
+          </section>        
+          <ButtonsNavigation handleAction={this.handleAction.bind(this)}/>
+          <SidebarNavigation things={this.state.things} 
+                            sidebarVisible={this.state.sidebarVisible}
+                            handleSelectThing={this.handleSelectThing.bind(this)}/>
         </div>
-        <Label className="things-counter">
-          THINGS: {this.state.things.length}
-        </Label>
-        {this.renderCorrectSection()}            
-        <ButtonsNavigation handleAction={this.handleAction.bind(this)}/>
-        <SidebarNavigation things={this.state.things} 
-                           sidebarVisible={this.state.sidebarVisible}
-                           handleSelectThing={this.handleSelectThing.bind(this)}/>
-      </div>
+      </MuiThemeProvider>
     );
   }
 

@@ -65,30 +65,11 @@
   .things-container .partecipants .ui.checkbox {
     margin-bottom: 1em; }
 
-.top-menu {
-  background: #009688;
-  height: 40px;
-  padding-left: 1em; }
-  .top-menu img {
-    height: 100%;
-    padding: .4em; }
+.section-container {
+  margin: .5em; }
 
-.sidebar-left {
-  top: 40px;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  margin-top: 40px;
-  background-color: #009688;
-  width: 60vw;
-  left: -60vw;
-  transition: all 0.5s ease-in-out; }
-  .sidebar-left.visible {
-    left: 0;
-    margin-top: 40px;
-    transition: all 0.5s ease-in-out; }
-  .sidebar-left p {
-    color: white;
-    border-bottom: 1px solid white;
-    margin: 0;
-    padding: 1em; }
+.top-menu {
+  background-color: #009688 !important; }
+
+.drawer > div {
+  margin-top: 64px; }

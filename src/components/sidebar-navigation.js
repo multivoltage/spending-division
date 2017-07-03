@@ -1,23 +1,22 @@
 import React, { Component } from 'react'
-import { Sidebar } from 'semantic-ui-react'
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 
 export default class SidebarNavigation extends Component {
   
   render() {
 
-    const classNames = this.props.sidebarVisible ? "sidebar-left visible" : "sidebar-left" 
-
     return (
-      <div className={classNames}>
+      <Drawer className="drawer" open={this.props.sidebarVisible}>
         {this.renderSections()}
-      </div>
+      </Drawer>
     )
   }
 
   renderSections(){
       return this.props.things.map((thing,index) => {
           return (
-              <p key={index} onClick={this.props.handleSelectThing.bind(this,thing)}>{thing.name}</p>
+              <MenuItem key={index} onTouchTap={this.props.handleSelectThing.bind(this,thing)}>{thing.name}</MenuItem>
           );
       });
   }
