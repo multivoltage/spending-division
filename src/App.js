@@ -18,7 +18,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      people: [{name: 'Me'},{name: 'Luca'},{name: 'Bho'}],
+      people: [{name: 'Me'}],
       things: [{partecipants:[]}],
       step: 0, // step + 1 = things[x],
       showRecap: false,
