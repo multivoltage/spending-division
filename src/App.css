@@ -73,3 +73,6 @@
 
 .drawer > div {
   margin-top: 64px; }
+  .drawer > div .go-partecipants {
+    border-bottom: 1px solid #009688 !important;
+    color: #009688 !important; }

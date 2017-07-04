@@ -93,6 +93,11 @@ $tab-selected: #EEEEEE;
 }
 .drawer > div {
   margin-top: 64px;
+
+  .go-partecipants {
+    border-bottom: 1px solid $primary-color!important;
+    color: $primary-color!important;
+  }
 }
 
 // .top-menu {

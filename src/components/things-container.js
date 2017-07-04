@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Input, Divider, Checkbox } from 'semantic-ui-react';
 import PartecipantChooser from './partecipant-chooser.js';
+import TextField from 'material-ui/TextField';
 
 export default class ThingsContainer extends Component {
 
@@ -13,12 +14,11 @@ export default class ThingsContainer extends Component {
     // putting this 2 lines invide Input' value attr, name did not change we step changed
     let name = this.props.thing.name || "";
     let price = this.props.thing.price || "";
-
     return (
       <Container className="things-container">
         <header>
-            <Input className="name" placeholder="thing..." value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
-            <Input className="price" placeholder="price..." value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
+            <TextField className="_name" floatingLabelText="thing name" fullWidth={true} value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
+            <TextField className="_price" floatingLabelText="thing price" fullWidth={true} value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
             <p className="title">PARTECIPANTS</p>
         </header>
         <Divider />

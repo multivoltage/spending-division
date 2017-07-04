@@ -156,10 +156,18 @@ export default class App extends Component {
   }
 
   handleSelectThing(thing){
-    let index = this.state.things.indexOf(thing);
-    this.setState({
-      step: index+1,
-      sidebarVisible: false
-    });
+    if(!thing){
+      // go to people
+      this.setState({
+        sidebarVisible: false,
+        step: 0
+      });
+    } else {
+      let index = this.state.things.indexOf(thing);
+      this.setState({
+        step: index+1,
+        sidebarVisible: false
+      });
+    }
   }
 }

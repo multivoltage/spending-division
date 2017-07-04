@@ -8,6 +8,7 @@ export default class SidebarNavigation extends Component {
 
     return (
       <Drawer className="drawer" open={this.props.sidebarVisible}>
+        <MenuItem className="go-partecipants" onTouchTap={this.props.handleSelectThing.bind(this)}>See all people</MenuItem>
         {this.renderSections()}
       </Drawer>
     )
