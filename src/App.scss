@@ -78,15 +78,13 @@ $tab-selected: #EEEEEE;
   }
 
   .partecipants {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
+    > div {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
     .selectAll {
       font-weight: bold;
-    }
-    .ui.checkbox {
-      margin-bottom: 1em;
     }
   }
 }

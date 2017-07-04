@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Checkbox, Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import Checkbox from 'material-ui/Checkbox';
 
 export default class PartecipantChooser extends Component {
 
@@ -9,7 +10,9 @@ export default class PartecipantChooser extends Component {
 
   render() {
     return (
-          <Checkbox label={this.props.people.name} checked={this.isPeoplePartecipant()} onChange={this.onChange.bind(this)} />
+          <Checkbox label={this.props.people.name} 
+                    checked={this.isPeoplePartecipant()}
+                    onCheck={this.onCheck.bind(this)} />
     );
   }
 
@@ -17,7 +20,7 @@ export default class PartecipantChooser extends Component {
     return this.props.thing.partecipants ? this.props.thing.partecipants.includes(this.props.people.name) : false;
   }
 
-  onChange(ctx,data){
-    this.props.handleSelectSingle(data.checked,this.props.people,this.props.thing);
+  onCheck(ctx,data){
+    this.props.handleSelectSingle(data,this.props.people,this.props.thing);
   }
 }

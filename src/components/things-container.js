@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Input, Divider, Checkbox } from 'semantic-ui-react';
+import { Container, Input, Divider } from 'semantic-ui-react';
 import PartecipantChooser from './partecipant-chooser.js';
 import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
+import ActionFavorite from 'material-ui/svg-icons/action/favorite';
+import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
 export default class ThingsContainer extends Component {
 
@@ -24,7 +27,11 @@ export default class ThingsContainer extends Component {
         <Divider />
 
           <div className="partecipants">
-            <Checkbox className="selectAll" label="ALL" onChange={this.onChange.bind(this)} checked={this.allPeoplePartecipants()}/>
+            <Checkbox className="selectAll" label="ALL" 
+                      onCheck={this.onCheck.bind(this)} 
+                      checkedIcon={<ActionFavorite />}
+                      uncheckedIcon={<ActionFavoriteBorder />}       
+                      checked={this.allPeoplePartecipants()}/>
             {this.renderPartecipants()}
           </div>
 
@@ -43,8 +50,8 @@ export default class ThingsContainer extends Component {
     return totalPeople === partecipants;
   }
 
-  onChange(ctx,data){
-    this.props.handleSelectAll(data.checked,this.props.thing);
+  onCheck(ctx,data){
+    this.props.handleSelectAll(data,this.props.thing);
   }
 
   renderPartecipants(){
