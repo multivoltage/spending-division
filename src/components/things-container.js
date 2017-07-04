@@ -22,9 +22,8 @@ export default class ThingsContainer extends Component {
         <header>
             <TextField className="_name" floatingLabelText="Name" fullWidth={true} value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
             <TextField className="_price" floatingLabelText="Price" fullWidth={true} value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
-            <p className="title">PARTECIPANTS</p>
         </header>
-        <Divider />
+        <p className="title">PARTECIPANTS</p>
 
           <div className="partecipants">
             <Checkbox className="selectAll" label="ALL" 

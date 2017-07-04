@@ -63,20 +63,13 @@ $tab-selected: #EEEEEE;
 }
 
 .things-container {
-  .ui.input {
-    width: 100%;
-  }
 
-  .price {
-    margin-top: .5em;
-    margin-bottom: .5em;
-  }
-  
   .title {
+    color: $primary-color;
+    padding: 1em;
     font-size: large;
     text-align: center;
   }
-
   .partecipants {
 
     > div {

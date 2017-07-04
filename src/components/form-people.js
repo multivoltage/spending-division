@@ -19,7 +19,7 @@ export default class FormPeople extends Component {
                     <AddCircleOutline color="#009688" onClick={this.increment.bind(this,1)}/>
                 </IconButton>    
                 <IconButton>
-                    <AddCircleOutline color={red500} onClick={this.increment.bind(this,-1)}/>
+                    <RemoveCircleOutline color={red500} onClick={this.increment.bind(this,-1)}/>
                 </IconButton>  
                 <span className="counter-label">{this.props.people.length} people</span>          
             </section>

@@ -48,14 +48,9 @@
   margin-bottom: 1em !important;
   margin-top: 1em !important; }
 
-.things-container .ui.input {
-  width: 100%; }
-
-.things-container .price {
-  margin-top: .5em;
-  margin-bottom: .5em; }
-
 .things-container .title {
+  color: #009688;
+  padding: 1em;
   font-size: large;
   text-align: center; }
 
