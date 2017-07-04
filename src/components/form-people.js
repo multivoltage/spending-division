@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Input, Divider } from 'semantic-ui-react';
-import FlatButton from 'material-ui/FlatButton';
-import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
+import IconButton from 'material-ui/IconButton';
+import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
+import RemoveCircleOutline from 'material-ui/svg-icons/content/remove-circle-outline';
+import { red500 } from 'material-ui/styles/colors';
 
 export default class FormPeople extends Component {
 
@@ -14,9 +15,13 @@ export default class FormPeople extends Component {
     return (
         <div className="people-container">
             <section className="counter-choser">
-                <FlatButton backgroundColor label="ADD PEOPLE" onClick={this.increment.bind(this,1)}/>
-                <FlatButton disbled="true" disableTouchRipple="true" label={this.props.people.length} />
-                <FlatButton label="REMOVE PEOPLE" onClick={this.increment.bind(this,-1)} />
+                <IconButton>
+                    <AddCircleOutline color="#009688" onClick={this.increment.bind(this,1)}/>
+                </IconButton>    
+                <IconButton>
+                    <AddCircleOutline color={red500} onClick={this.increment.bind(this,-1)}/>
+                </IconButton>  
+                <span className="counter-label">{this.props.people.length} people</span>          
             </section>
             
             <div className="inputs-people">

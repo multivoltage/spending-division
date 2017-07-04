@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Button, Divider } from 'semantic-ui-react';
-
-import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
-import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
+import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
+import NavigateBefore from 'material-ui/svg-icons/image/navigate-before';
+import Done from 'material-ui/svg-icons/action/done';
 
-const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
-const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
-const nearbyIcon = <IconLocationOn />;
+
+const nextIcon = <NavigateNext />;
+const beforeIcon = <NavigateBefore />;
+const doneIcon = <Done />;
 
 export default class ButtonsNavigation extends Component {
 
@@ -26,17 +26,17 @@ export default class ButtonsNavigation extends Component {
           <BottomNavigation selectedIndex={this.state.selectedIndex}>
             <BottomNavigationItem
               label="Prev"
-              icon={nearbyIcon}
+              icon={beforeIcon}
               onClick={this.handlePrev.bind(this)}
             />
             <BottomNavigationItem
-              label="Done"
-              icon={nearbyIcon}
+              label="Recap"
+              icon={doneIcon}
               onClick={this.handleDone.bind(this)}
             />
             <BottomNavigationItem
               label="Next"
-              icon={nearbyIcon}
+              icon={nextIcon}
               onClick={this.handleNext.bind(this)}
             />
           </BottomNavigation>

@@ -36,8 +36,11 @@
     margin-bottom: .5em; }
 
 .counter-choser {
-  text-align: center;
-  display: block !important; }
+  display: flex;
+  align-items: center; }
+  .counter-choser .counter-label {
+    font-size: large;
+    margin-left: 1em; }
 
 .things-counter {
   margin-left: 1em !important;
