@@ -17,8 +17,8 @@ export default class ThingsContainer extends Component {
     return (
       <Container className="things-container">
         <header>
-            <TextField className="_name" floatingLabelText="thing name" fullWidth={true} value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
-            <TextField className="_price" floatingLabelText="thing price" fullWidth={true} value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
+            <TextField className="_name" floatingLabelText="Name" fullWidth={true} value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
+            <TextField className="_price" floatingLabelText="Price" fullWidth={true} value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
             <p className="title">PARTECIPANTS</p>
         </header>
         <Divider />
