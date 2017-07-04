@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Input, Divider } from 'semantic-ui-react';
 import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
 
 export default class FormPeople extends Component {
 
@@ -29,9 +30,11 @@ export default class FormPeople extends Component {
   renderInputs(){
       return this.props.people.map((p,index) => {
           return (
-            <Input key={index} value={p.name} placeholder='name...' onChange={this.handleChange.bind(this,index)}/>
+            <TextField key={index} fullWidth={true} intText="People name..." value={p.name} onChange={this.handleChange.bind(this,index)}/>
           );
       });
+
+
   }
 
   handleChange(index,ctx){
