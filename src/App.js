@@ -13,7 +13,7 @@ import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
-
+import HorizontalLinearStepper from './components/horizontalLinearStepper.js';
 export default class App extends Component {
 
   constructor(props){
@@ -44,6 +44,7 @@ export default class App extends Component {
                   iconStyleRight={styleQuitRecap}
                   iconElementRight={<FlatButton label="Quit" onClick={this.handleCloseRecat.bind(this)} />}>
           </AppBar>
+          <HorizontalLinearStepper stepIndex={this.state.step} things={this.state.things} />
           <section className="section-container" zDepth={2}>
              {this.renderCorrectSection()}     
           </section>        
