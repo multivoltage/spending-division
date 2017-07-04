@@ -12,6 +12,7 @@ import { Icon, Label } from 'semantic-ui-react';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import FlatButton from 'material-ui/FlatButton';
 
 export default class App extends Component {
 
@@ -30,12 +31,18 @@ export default class App extends Component {
   render() {
 
     const titleAppBar = this.state.showRecap ? "Recap" : this.state.step === 0 ? "People" : "Things "+this.state.step;
+    const styleQuitRecap = {
+      display: this.state.showRecap ? '' : 'none'
+    };
 
     return (
       <MuiThemeProvider>
       
         <div>
-          <AppBar className="top-menu" title={titleAppBar} onLeftIconButtonTouchTap={this.handleSidebar.bind(this)}>
+          <AppBar className="top-menu" title={titleAppBar} 
+                  onLeftIconButtonTouchTap={this.handleSidebar.bind(this)}
+                  iconStyleRight={styleQuitRecap}
+                  iconElementRight={<FlatButton label="Quit" onClick={this.handleCloseRecat.bind(this)} />}>
           </AppBar>
           <section className="section-container" zDepth={2}>
              {this.renderCorrectSection()}     
