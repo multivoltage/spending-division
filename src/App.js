@@ -26,6 +26,24 @@ export default class App extends Component {
       sidebarVisible: false
     };
     injectTapEventPlugin();
+
+    //this.simulateOn();
+  }
+
+  simulateOn(){
+    setTimeout(() => {
+    this.setState({
+      people: [{name: "diego"},{name: "luca"},{name: "paolo"}],
+      showRecap: true,
+      sidebarVisible: false,
+      step: 1,
+      things: [
+        {price: 100, partecipants:["diego","luca"]},
+        {price: 100, partecipants:["luca"]},
+        {price: 100, partecipants:["diego","paolo"]},
+      ]
+    });
+    },1000);    
   }
 
   render() {
@@ -44,14 +62,14 @@ export default class App extends Component {
                   iconStyleRight={styleQuitRecap}
                   iconElementRight={<FlatButton label="Quit" onClick={this.handleCloseRecat.bind(this)} />}>
           </AppBar>
-          {/*<HorizontalLinearStepper stepIndex={this.state.step} things={this.state.things} />*/}
+          {/* TO-DO <HorizontalLinearStepper stepIndex={this.state.step} things={this.state.things} />*/}
           <section className="section-container" zDepth={2}>
              {this.renderCorrectSection()}     
           </section>        
           <ButtonsNavigation handleAction={this.handleAction.bind(this)}/>
           <SidebarNavigation things={this.state.things} 
-                            sidebarVisible={this.state.sidebarVisible}
-                            handleSelectThing={this.handleSelectThing.bind(this)}/>
+                             sidebarVisible={this.state.sidebarVisible}
+                             handleSelectThing={this.handleSelectThing.bind(this)}/>
         </div>
       </MuiThemeProvider>
     );

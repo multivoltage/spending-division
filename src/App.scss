@@ -84,8 +84,8 @@ $tab-selected: #EEEEEE;
 }
 .section-container {
   margin: 1em;
-  margin-top: 64px;
-  margin-bottom: 64px;
+  margin-top: 76px;
+  margin-bottom: 72px;
 }
 .top-menu {
   background-color: $primary-color!important;
@@ -101,36 +101,12 @@ $tab-selected: #EEEEEE;
   }
 }
 
-// .top-menu {
-//   background: $primary-color;
-//   height: 40px;
-//   padding-left: 1em;
-//    img {
-//      height: 100%;
-//      padding: .4em;
-//    }
-// }
-// .sidebar-left {
-//   top: 40px;
-//   position: absolute;
-//   top: 0;
-//   height: 100%;
-//   margin-top: 40px;
-//   background-color: $primary-color;
-//   width: 60vw;
-//   left: -60vw;
-//   transition: all 0.5s ease-in-out;
-
-//   &.visible {
-//     left: 0;
-//     margin-top: 40px;
-//     transition: all 0.5s ease-in-out;
-//   }
-
-//   p {
-//     color: white;
-//     border-bottom: 1px solid white;
-//     margin: 0;
-//     padding: 1em;
-//   }
-// }
+.recap-container {
+  .value {
+    font-weight: bold;
+    line-height: 24px!important;
+    color: $primary-color!important;
+    width: 42px!important;
+    text-align: right!important;
+  }
+}

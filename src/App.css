@@ -64,8 +64,8 @@
 
 .section-container {
   margin: 1em;
-  margin-top: 64px;
-  margin-bottom: 64px; }
+  margin-top: 76px;
+  margin-bottom: 72px; }
 
 .top-menu {
   background-color: #009688 !important;
@@ -77,3 +77,10 @@
   .drawer > div .go-partecipants {
     border-bottom: 1px solid #009688 !important;
     color: #009688 !important; }
+
+.recap-container .value {
+  font-weight: bold;
+  line-height: 24px !important;
+  color: #009688 !important;
+  width: 42px !important;
+  text-align: right !important; }

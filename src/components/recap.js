@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Divider, Icon } from 'semantic-ui-react';
 import Calculator from '.././utils.js';
+import Subheader from 'material-ui/Subheader';
+import Paper from 'material-ui/Paper';
+import {List, ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import ActionInfo from 'material-ui/svg-icons/action/info';
 
 export default class Recap extends Component {
 
@@ -9,11 +13,27 @@ export default class Recap extends Component {
   }
 
   render() {
+
+    let total = 0;
+    this.props.things.forEach((t) => {
+        if(t){
+            total += t.price;
+        }
+    });
+    total = total+" €";
     return (
-        <Container>
-             <Icon size="big" name="close" onClick={this.handleCloseRecat.bind(this)} />
-            {this.renderPeople()}
-        </Container>
+        <Paper className="recap-container" zDepth={1}>
+            <List className="recap-cost">
+                <Subheader>General Info</Subheader>
+                <ListItem primaryText="Total cost" rightIcon={<span className="value">{total}</span>} />
+                <ListItem primaryText="Partecipants" rightIcon={<span className="value">{this.props.people.length}</span>} />
+            </List>
+            <Divider />
+            <List className="recap-quotes">
+                <Subheader>Single quotes</Subheader>
+                {this.renderPeopleRecap()}
+            </List>
+        </Paper>
     );
   }
 
@@ -21,15 +41,15 @@ export default class Recap extends Component {
       this.props.handleCloseRecat();
   }
   
-  renderPeople(){
+  renderPeopleRecap(){
       return this.props.people.map((p,index) => {
-          return this.renderPeopleRecap(index,p);
+          return this.renderPeopleSingle(index,p);
       })
   }  
 
-  renderPeopleRecap(index,p){
+  renderPeopleSingle(index,p){
       return (
-          <p key={index}>{p.name} {Calculator.AmountForPeople(this.props.things,p)}</p>
+          <ListItem key={index} primaryText={p.name} rightIcon={<span className="value">{Calculator.AmountForPeople(this.props.things,p)+" €"}</span>}/>
       );
   }
 }

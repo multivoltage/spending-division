@@ -35,7 +35,7 @@ export default class FormPeople extends Component {
   renderInputs(){
       return this.props.people.map((p,index) => {
           return (
-            <TextField key={index} fullWidth={true} intText="People name..." value={p.name} onChange={this.handleChange.bind(this,index)}/>
+            <TextField name="people-name" key={index} fullWidth={true} hintText="People name..." value={p.name} onChange={this.handleChange.bind(this,index)}/>
           );
       });
 
