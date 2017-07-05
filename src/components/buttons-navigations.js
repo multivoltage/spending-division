@@ -44,17 +44,20 @@ export default class ButtonsNavigation extends Component {
     );
   }
 
-  handlePrev(){
+  handlePrev(e){
+      e.preventDefault();
       this.setState({selectedIndex: 0});
       this.props.handleAction('prev');
   }
 
-  handleNext(){
+  handleNext(e){
+      e.preventDefault();
       this.setState({selectedIndex: 2});
       this.props.handleAction('next');
   }
 
-  handleDone(){
+  handleDone(e){
+    e.preventDefault();
     this.setState({selectedIndex: 1});
     this.props.handleAction('done');
   }
