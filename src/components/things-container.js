@@ -16,12 +16,12 @@ export default class ThingsContainer extends Component {
   render() {
     // putting this 2 lines invide Input' value attr, name did not change we step changed
     let name = this.props.thing.name || "";
-    let price = this.props.thing.price || "";
+    let price = this.props.thing.price !== null ? this.props.thing.price : "";
     return (
       <Container className="things-container">
         <header>
             <TextField className="_name" floatingLabelText="Name" fullWidth={true} value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
-            <TextField className="_price" floatingLabelText="Price" fullWidth={true} value={price} type="number" onChange={this.onThingChangePrice.bind(this,this.props._index)}/>
+            <TextField className="_price" floatingLabelText="Price" type="number" fullWidth={true} value={price} onChange={this.onThingChangePrice.bind(this,this.props._index)} />
         </header>
         <p className="title">PARTECIPANTS</p>
 
@@ -67,7 +67,7 @@ export default class ThingsContainer extends Component {
 
   onThingChangePrice(index,ctx){
     let newThing = Object.assign({}, this.props.thing);
-    newThing.price = +ctx.target.value;
+    newThing.price = parseFloat(ctx.target.value);
     this.props.handleThingChange(newThing,index);
   }
 }
