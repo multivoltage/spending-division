@@ -16,7 +16,10 @@ export default class ThingsContainer extends Component {
   render() {
     // putting this 2 lines invide Input' value attr, name did not change we step changed
     let name = this.props.thing.name || "";
-    let price = this.props.thing.price !== null ? this.props.thing.price : "";
+    let price = this.props.thing.price;
+    if(price === undefined)
+      price = "";
+
     return (
       <Container className="things-container">
         <header>
