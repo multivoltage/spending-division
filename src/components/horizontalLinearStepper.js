@@ -14,7 +14,6 @@ export default class HorizontalLinearStepper extends React.Component {
   };
 
   getStepContent(index) {
-    debugger;
     if(index === 0){
       return "People";
     } 

@@ -22,7 +22,8 @@
 
 .navigation-buttons {
   bottom: 0;
-  position: absolute;
+  z-index: 10;
+  position: fixed;
   width: 100%; }
 
 .thing-container,
@@ -62,10 +63,14 @@
   font-weight: bold; }
 
 .section-container {
-  margin: 1em; }
+  margin: 1em;
+  margin-top: 64px;
+  margin-bottom: 64px; }
 
 .top-menu {
-  background-color: #009688 !important; }
+  background-color: #009688 !important;
+  position: fixed !important;
+  top: 0; }
 
 .drawer > div {
   margin-top: 64px; }

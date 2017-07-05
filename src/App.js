@@ -44,7 +44,7 @@ export default class App extends Component {
                   iconStyleRight={styleQuitRecap}
                   iconElementRight={<FlatButton label="Quit" onClick={this.handleCloseRecat.bind(this)} />}>
           </AppBar>
-          <HorizontalLinearStepper stepIndex={this.state.step} things={this.state.things} />
+          {/*<HorizontalLinearStepper stepIndex={this.state.step} things={this.state.things} />*/}
           <section className="section-container" zDepth={2}>
              {this.renderCorrectSection()}     
           </section>        

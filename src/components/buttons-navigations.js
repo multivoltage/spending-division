@@ -27,17 +27,17 @@ export default class ButtonsNavigation extends Component {
             <BottomNavigationItem
               label="Prev"
               icon={beforeIcon}
-              onClick={this.handlePrev.bind(this)}
+              onTouchTap={this.handlePrev.bind(this)}
             />
             <BottomNavigationItem
               label="Recap"
               icon={doneIcon}
-              onClick={this.handleDone.bind(this)}
+              onTouchTap={this.handleDone.bind(this)}
             />
             <BottomNavigationItem
               label="Next"
               icon={nextIcon}
-              onClick={this.handleNext.bind(this)}
+              onTouchTap={this.handleNext.bind(this)}
             />
           </BottomNavigation>
         </Paper>
