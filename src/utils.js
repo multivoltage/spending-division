@@ -1,6 +1,10 @@
 const Calculator = {
     
     AmountForPeople(things,people){
+
+        if(this.price === ''){
+            return 0;
+        }
         let totalForSingle = 0;
 
         things.forEach((thing) => {
@@ -10,7 +14,7 @@ const Calculator = {
             }
         });
         
-        return totalForSingle;
+        return Math.round(totalForSingle * 100) / 100;
     }
 }
 

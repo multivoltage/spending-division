@@ -27,7 +27,7 @@ export default class App extends Component {
     };
     injectTapEventPlugin();
 
-    //this.simulateOn();
+    this.simulateOn();
   }
 
   simulateOn(){
@@ -38,9 +38,9 @@ export default class App extends Component {
       sidebarVisible: false,
       step: 1,
       things: [
-        {price: 100, partecipants:["diego","luca"]},
-        {price: 100, partecipants:["luca"]},
-        {price: 100, partecipants:["diego","paolo"]},
+        {price: 10, partecipants:["diego","luca","paolo"]},
+        {price: 4, partecipants:["luca"]},
+        //{price: 22.6, partecipants:["diego","paolo"]},
       ]
     });
     },1000);    

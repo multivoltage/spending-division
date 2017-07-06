@@ -82,5 +82,13 @@
   font-weight: bold;
   line-height: 24px !important;
   color: #009688 !important;
-  width: 42px !important;
+  width: 82px !important;
   text-align: right !important; }
+
+.recap-container-about {
+  margin-top: 12px;
+  background-color: #EEEEEE !important; }
+  .recap-container-about .about-name {
+    width: 130px !important;
+    font-weight: bold;
+    text-align: right !important; }

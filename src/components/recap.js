@@ -5,6 +5,8 @@ import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import ActionInfo from 'material-ui/svg-icons/action/info';
+import FontIcon from 'material-ui/FontIcon';
+import FlatButton from 'material-ui/FlatButton';
 
 export default class Recap extends Component {
 
@@ -21,7 +23,12 @@ export default class Recap extends Component {
         }
     });
     total = total+" €";
+    const s = {
+        display: 'block',
+        width: '100%',
+    };
     return (
+        <div>
         <Paper className="recap-container" zDepth={1}>
             <List className="recap-cost">
                 <Subheader>General Info</Subheader>
@@ -34,6 +41,14 @@ export default class Recap extends Component {
                 {this.renderPeopleRecap()}
             </List>
         </Paper>
+        <Paper className="recap-container-about" color="red" zDepth={1}>
+            <List>
+                <Subheader>About this App</Subheader>
+                <ListItem primaryText="Dev' s name" rightIcon={<span className="about-name">Diego Tonini</span>} />
+                <ListItem onprimaryText="Fork repo" rightIcon={<a style={s} href="www.google.it"><img src="https://assets-cdn.github.com/favicon.ico"/></a>  } />              
+            </List>
+        </Paper>
+        </div>
     );
   }
 

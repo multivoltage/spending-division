@@ -106,7 +106,18 @@ $tab-selected: #EEEEEE;
     font-weight: bold;
     line-height: 24px!important;
     color: $primary-color!important;
-    width: 42px!important;
+    width: 82px!important;
     text-align: right!important;
+  }
+  
+  &-about {
+    margin-top: 12px;
+    background-color: #EEEEEE!important;
+
+    .about-name {
+      width: 130px!important;
+      font-weight: bold;
+      text-align: right!important;
+    }
   }
 }
