@@ -167,6 +167,20 @@ export default class App extends Component {
   // next
   handleAction(direction){
     let current = this.state.step;
+
+
+    if(direction === 'prev' || direction === 'next'){
+      let emptyNamesSize = this.state.things
+                                  .map((thing) => { return thing.name})
+                                  .filter((name) => {
+                                    if(!name)
+                                      return true;
+                                    else 
+                                      return false;
+                                  });
+      // todo                         
+    }
+
     if(direction === 'prev'){
       if(current === 0)
         return;
