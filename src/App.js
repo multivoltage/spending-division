@@ -27,7 +27,7 @@ export default class App extends Component {
     };
     injectTapEventPlugin();
 
-    this.simulateOn();
+    //this.simulateOn();
   }
 
   simulateOn(){

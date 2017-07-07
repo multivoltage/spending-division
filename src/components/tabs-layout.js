@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Icon, Container, Dimmer, Loader, Divider } from 'semantic-ui-react';
 
 /**
  * we want to pass:

@@ -49,18 +49,19 @@
   margin-bottom: 1em !important;
   margin-top: 1em !important; }
 
-.things-container .title {
-  color: #009688;
-  padding: 1em;
-  font-size: large;
-  text-align: center; }
-
-.things-container .partecipants > div {
-  margin-top: 1em;
-  margin-bottom: 1em; }
-
-.things-container .partecipants .selectAll {
-  font-weight: bold; }
+.things-container {
+  margin-left: 1em;
+  margin-right: 1em; }
+  .things-container .title {
+    color: #009688;
+    padding: 1em;
+    font-size: large;
+    text-align: center; }
+  .things-container .partecipants > div {
+    margin-top: 1em;
+    margin-bottom: 1em; }
+  .things-container .partecipants .selectAll {
+    font-weight: bold; }
 
 .section-container {
   margin: 1em;

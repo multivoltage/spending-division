@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Input, Divider } from 'semantic-ui-react';
 import PartecipantChooser from './partecipant-chooser.js';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+import Paper from 'material-ui/Paper';
 
 export default class ThingsContainer extends Component {
 
@@ -21,7 +21,7 @@ export default class ThingsContainer extends Component {
       price = "";
 
     return (
-      <Container className="things-container">
+      <section className="things-container">
         <header>
             <TextField id="txt_name" className="_name" floatingLabelText="Name" fullWidth={true} value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
             <TextField id="txt_price" className="_price" floatingLabelText="Price" type="number" fullWidth={true} value={price} onChange={this.onThingChangePrice.bind(this,this.props._index)} />
@@ -37,7 +37,7 @@ export default class ThingsContainer extends Component {
             {this.renderPartecipants()}
           </div>
 
-      </Container>
+      </section>
     );
   }
 

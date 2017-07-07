@@ -64,7 +64,9 @@ $tab-selected: #EEEEEE;
 }
 
 .things-container {
-
+  margin-left: 1em;
+  margin-right: 1em;
+  
   .title {
     color: $primary-color;
     padding: 1em;
