@@ -18,7 +18,7 @@ export default class Recap extends Component {
 
     let total = 0;
     this.props.things.forEach((t) => {
-        if(t){
+        if(t.price){
             total += t.price;
         }
     });
@@ -34,6 +34,7 @@ export default class Recap extends Component {
                 <Subheader>General Info</Subheader>
                 <ListItem primaryText="Total cost" rightIcon={<span className="value">{total}</span>} />
                 <ListItem primaryText="Partecipants" rightIcon={<span className="value">{this.props.people.length}</span>} />
+                <ListItem primaryText="Things" rightIcon={<span className="value">{this.props.things.length}</span>} />
             </List>
             <Divider />
             <List className="recap-quotes">
@@ -45,7 +46,7 @@ export default class Recap extends Component {
             <List>
                 <Subheader>About this App</Subheader>
                 <ListItem primaryText="Dev' s name" rightIcon={<span className="about-name">Diego Tonini</span>} />
-                <ListItem onprimaryText="Fork repo" rightIcon={<a style={s} href="www.google.it"><img src="https://assets-cdn.github.com/favicon.ico"/></a>  } />              
+                <ListItem onprimaryText="Fork repo" rightIcon={<a className="link-repo" style={s} href="https://github.com/multivoltage/spending-division"><img src="https://assets-cdn.github.com/favicon.ico"/></a>  } />              
             </List>
         </Paper>
         </div>
