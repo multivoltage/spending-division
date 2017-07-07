@@ -67,6 +67,19 @@ $tab-selected: #EEEEEE;
   margin-left: 1em;
   margin-right: 1em;
   
+  .price-choser {
+    display: flex;
+    
+    .amount {
+      margin-right: 1em;
+    }
+    .quantity-choser {
+      margin-left: 1em;
+      display: flex;
+      margin-top: 20px;
+      align-items: center;
+    }
+  }
   .title {
     color: $primary-color;
     padding: 1em;

@@ -4,7 +4,11 @@ import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
+import IconButton from 'material-ui/IconButton';
+import RemoveCircleOutline from 'material-ui/svg-icons/content/remove-circle-outline';
 import Paper from 'material-ui/Paper';
+import { red500 } from 'material-ui/styles/colors';
 
 export default class ThingsContainer extends Component {
 
@@ -24,7 +28,18 @@ export default class ThingsContainer extends Component {
       <section className="things-container">
         <header>
             <TextField id="txt_name" className="_name" floatingLabelText="Name" fullWidth={true} value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
-            <TextField id="txt_price" className="_price" floatingLabelText="Price" type="number" fullWidth={true} value={price} onChange={this.onThingChangePrice.bind(this,this.props._index)} />
+            <div className="price-choser">
+              <TextField id="amount" className="amount" floatingLabelText="Price" type="number" fullWidth={true} value={price} onChange={this.onThingChangePrice.bind(this,this.props._index)} />
+              <section className="quantity-choser">  
+                  <IconButton onTouchTap={this.handleDecrementQuantity.bind(this)}>
+                      <RemoveCircleOutline color={red500} />
+                  </IconButton> 
+                  <span className="counter-label">{this.props.thing.quantity}x</span>   
+                  <IconButton onTouchTap={this.handleIncrementQuantity.bind(this)}>
+                      <AddCircleOutline color="#009688"/>
+                  </IconButton>          
+              </section>
+            </div>
         </header>
         <p className="title">PARTECIPANTS</p>
 
@@ -39,6 +54,16 @@ export default class ThingsContainer extends Component {
 
       </section>
     );
+  }
+
+  handleIncrementQuantity(e){
+    e.preventDefault();
+    this.props.handleQuantityForThing(this.props.thing,1);
+  }
+
+  handleDecrementQuantity(e){
+    e.preventDefault();
+    this.props.handleQuantityForThing(this.props.thing,-1);
   }
 
   allPeoplePartecipants(){

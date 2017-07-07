@@ -19,7 +19,7 @@ export default class Recap extends Component {
     let total = 0;
     this.props.things.forEach((t) => {
         if(t.price){
-            total += t.price;
+            total += t.price * t.quantity;  
         }
     });
     total = total+" €";

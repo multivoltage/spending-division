@@ -9,12 +9,13 @@ const Calculator = {
 
         things.forEach((thing) => {
             let partecipantCount = thing.partecipants.length;
+            let quantity = thing.quantity;
             if(thing.partecipants.includes(people.name)){
-                totalForSingle += thing.price / partecipantCount;
+                totalForSingle += (thing.price * thing.quantity) / partecipantCount;
             }
         });
         
-        return Math.round(totalForSingle * 100) / 100;
+        return Math.round(totalForSingle* 100) / 100;
     }
 }
 

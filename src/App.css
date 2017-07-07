@@ -52,6 +52,15 @@
 .things-container {
   margin-left: 1em;
   margin-right: 1em; }
+  .things-container .price-choser {
+    display: flex; }
+    .things-container .price-choser .amount {
+      margin-right: 1em; }
+    .things-container .price-choser .quantity-choser {
+      margin-left: 1em;
+      display: flex;
+      margin-top: 20px;
+      align-items: center; }
   .things-container .title {
     color: #009688;
     padding: 1em;

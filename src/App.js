@@ -20,7 +20,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       people: [{name: 'Me'}],
-      things: [{partecipants:[]}],
+      things: [{partecipants:[], quantity: 1}],
       step: 0, // step + 1 = things[x],
       showRecap: false,
       sidebarVisible: false
@@ -97,6 +97,7 @@ export default class App extends Component {
       return (<ThingsContainer people={this.state.people} thing={selectedThing} 
                               handleThingChange={this.handleThingChange.bind(this)} 
                               _index={this.state.step-1}
+                              handleQuantityForThing={this.handleQuantityForThing.bind(this)}
                               handleSelectSingle={this.handleSelectSingle.bind(this)}
                               handleSelectAll={this.handleSelectAll.bind(this)} />);      
     }
@@ -155,6 +156,14 @@ export default class App extends Component {
     this.setState({people: people});
   }
   
+  handleQuantityForThing(thing,quantityDelta){
+    let index = this.state.things.indexOf(thing);
+    let thingsCopy = Object.assign([],this.state.things);
+    let thingCopy = Object.assign({},thing);
+    thingCopy.quantity += quantityDelta;
+    thingsCopy[index] = thingCopy;
+    this.setState({things: thingsCopy});
+  }
   // next
   handleAction(direction){
     let current = this.state.step;
@@ -168,7 +177,7 @@ export default class App extends Component {
     } else if(direction === 'next'){
       current++;
       if(!this.state.things[current-1]){
-        let things = this.state.things.push({partecipants: []});
+        let things = this.state.things.push({partecipants: [], quantity: 1});
         this.setState({thing: things, step: current});
       } else 
         this.setState({step: current});
