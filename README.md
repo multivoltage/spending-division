@@ -36,7 +36,6 @@ npm run deploy
 
 ## Todo
 * add speech to text
-* add option to increment/decrement the quantity for each things
 * add firebase or google drive so user can save data
 * 
 ## License
