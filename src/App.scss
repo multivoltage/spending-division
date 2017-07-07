@@ -104,6 +104,7 @@ $tab-selected: #EEEEEE;
 }
 
 .recap-container {
+
   .value {
     font-weight: bold;
     line-height: 24px!important;
@@ -113,12 +114,14 @@ $tab-selected: #EEEEEE;
   }
   
   &-about {
-    margin-top: 12px;
     background-color: #EEEEEE!important;
+    margin-top: 12px;
 
-    .link-repo {
+    a.link-repo {
+      display: block;
       text-align: center;
     }
+    
     .about-name {
       width: 130px!important;
       font-weight: bold;

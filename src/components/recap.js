@@ -23,10 +23,7 @@ export default class Recap extends Component {
         }
     });
     total = total+" €";
-    const s = {
-        display: 'block',
-        width: '100%',
-    };
+
     return (
         <div>
         <Paper className="recap-container" zDepth={1}>
@@ -46,7 +43,7 @@ export default class Recap extends Component {
             <List>
                 <Subheader>About this App</Subheader>
                 <ListItem primaryText="Dev' s name" rightIcon={<span className="about-name">Diego Tonini</span>} />
-                <ListItem onprimaryText="Fork repo" rightIcon={<a className="link-repo" style={s} href="https://github.com/multivoltage/spending-division"><img src="https://assets-cdn.github.com/favicon.ico"/></a>  } />              
+                <a className="link-repo" href="https://github.com/multivoltage/spending-division"><img src="https://assets-cdn.github.com/favicon.ico"/></a>              
             </List>
         </Paper>
         </div>
@@ -64,8 +61,13 @@ export default class Recap extends Component {
   }  
 
   renderPeopleSingle(index,p){
+      
+      let amount = Calculator.AmountForPeople(this.props.things,p);
+      if(amount === null || amount === undefined || isNaN(amount)){
+          amount = 0;
+      }
       return (
-          <ListItem key={index} primaryText={p.name} rightIcon={<span className="value">{Calculator.AmountForPeople(this.props.things,p)+" €"}</span>}/>
+          <ListItem key={index} primaryText={p.name} rightIcon={<span className="value">{amount+" €"}</span>}/>
       );
   }
 }

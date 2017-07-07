@@ -87,9 +87,10 @@
   text-align: right !important; }
 
 .recap-container-about {
-  margin-top: 12px;
-  background-color: #EEEEEE !important; }
-  .recap-container-about .link-repo {
+  background-color: #EEEEEE !important;
+  margin-top: 12px; }
+  .recap-container-about a.link-repo {
+    display: block;
     text-align: center; }
   .recap-container-about .about-name {
     width: 130px !important;
