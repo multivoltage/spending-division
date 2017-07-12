@@ -105,3 +105,13 @@
     width: 130px !important;
     font-weight: bold;
     text-align: right !important; }
+
+@media (min-width: 1023px) {
+  .section-container {
+    max-width: 50vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important; }
+  .people-container .counter-choser {
+    margin-left: auto;
+    margin-right: auto;
+    display: table; } }
