@@ -151,9 +151,25 @@ export default class App extends Component {
     this.setState({people: people});
   }
   removeLastPeople(){
-    let people = this.state.people;
-    people.pop();
-    this.setState({people: people});
+    let peoplesCopy = Object.assign([],this.state.people);
+    let thingsCopy = Object.assign([],this.state.things);
+    let lastPeople = peoplesCopy[peoplesCopy.length-1];
+    
+    peoplesCopy.pop();
+    thingsCopy = thingsCopy.map((thing) => {
+      if(thing.partecipants.includes(lastPeople.name)){
+        let index = thing.partecipants.indexOf(lastPeople.name);
+        thing.partecipants.splice(index, 1);        
+      }
+      return thing;
+    });
+    
+    
+
+    this.setState({
+      people: peoplesCopy,
+      things: thingsCopy
+    });
   }
   
   handleQuantityForThing(thing,quantityDelta){
