@@ -4,6 +4,9 @@ This is a simple app built to help you whenever you have a spending that needs t
 
 # [Try demo](https://multivoltage.github.io/spending-division) 
 
+# CHANGELOG
+* 21/7/2017 version 1.0.0 - fix calculate right recap after remove last people
+
 ## Getting Started
 * Add/Remove people in the People step
 * Add a thing and edit price,name and partecipant
