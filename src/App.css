@@ -53,12 +53,29 @@
   margin-left: 1em;
   margin-right: 1em; }
   .things-container .price-choser {
-    display: flex; }
+    display: flex;
+    flex-wrap: wrap; }
+    .things-container .price-choser .discount {
+      flex-basis: 50% !important; }
+      .things-container .price-choser .discount input {
+        text-align: right; }
+    .things-container .price-choser .discount-unit {
+      margin-left: 5px;
+      margin-bottom: 12px;
+      align-self: flex-end; }
+    .things-container .price-choser .discount-remove {
+      align-self: flex-end;
+      margin-bottom: 8px;
+      margin-left: 8px; }
     .things-container .price-choser .amount {
+      width: auto;
       margin-right: 1em; }
+    .things-container .price-choser .amount.discounted input {
+      color: red !important; }
     .things-container .price-choser .quantity-choser {
-      margin-left: 1em;
       display: flex;
+      justify-content: center;
+      flex-basis: 100%;
       margin-top: 20px;
       align-items: center; }
   .things-container .title {
@@ -88,12 +105,16 @@
     border-bottom: 1px solid #009688 !important;
     color: #009688 !important; }
 
+.recap-container .value-discount,
+.recap-container .value-cost,
 .recap-container .value {
   font-weight: bold;
   line-height: 24px !important;
-  color: #009688 !important;
   width: 82px !important;
   text-align: right !important; }
+
+.recap-container .value {
+  color: #009688 !important; }
 
 .recap-container-about {
   background-color: #EEEEEE !important;

@@ -20,7 +20,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       people: [{name: 'Me'}],
-      things: [{partecipants:[], quantity: 1}],
+      things: [{partecipants:[], quantity: 1, percDiscount: 0}],
       step: 0, // step + 1 = things[x],
       showRecap: false,
       sidebarVisible: false
@@ -207,7 +207,7 @@ export default class App extends Component {
     } else if(direction === 'next'){
       current++;
       if(!this.state.things[current-1]){
-        let things = this.state.things.push({partecipants: [], quantity: 1});
+        let things = this.state.things.push({partecipants: [], quantity: 1, percDiscount: 0});
         this.setState({thing: things, step: current});
       } else 
         this.setState({step: current});

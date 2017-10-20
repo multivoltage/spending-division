@@ -69,13 +69,35 @@ $tab-selected: #EEEEEE;
   
   .price-choser {
     display: flex;
+    flex-wrap: wrap;
     
+    .discount {
+      flex-basis: 50%!important;
+      input {
+        text-align: right;
+      }
+    } 
+    .discount-unit {
+      margin-left: 5px;
+      margin-bottom: 12px;
+      align-self: flex-end;
+    }
+    .discount-remove {
+      align-self: flex-end;
+      margin-bottom: 8px;
+      margin-left: 8px;      
+    }
     .amount {
+      width: auto;
       margin-right: 1em;
     }
+    .amount.discounted input{
+      color: red!important;
+    }
     .quantity-choser {
-      margin-left: 1em;
       display: flex;
+      justify-content: center;
+      flex-basis: 100%;
       margin-top: 20px;
       align-items: center;
     }
@@ -118,12 +140,17 @@ $tab-selected: #EEEEEE;
 
 .recap-container {
 
+  .value-discount,
+  .value-cost,
   .value {
     font-weight: bold;
     line-height: 24px!important;
-    color: $primary-color!important;
     width: 82px!important;
     text-align: right!important;
+  }
+
+  .value {
+    color: $primary-color!important;
   }
   
   &-about {

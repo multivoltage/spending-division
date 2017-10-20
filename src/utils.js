@@ -12,6 +12,7 @@ const Calculator = {
             let quantity = thing.quantity;
             if(thing.partecipants.includes(people.name)){
                 totalForSingle += (thing.price * thing.quantity) / partecipantCount;
+                totalForSingle -= thing.price * thing.percDiscount / 100;
             }
         });
         

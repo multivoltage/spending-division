@@ -17,19 +17,22 @@ export default class Recap extends Component {
   render() {
 
     let total = 0;
+    let totalDiscount = 0;
     this.props.things.forEach((t) => {
         if(t.price){
             total += t.price * t.quantity;  
+            totalDiscount += t.price * t.percDiscount / 100;
         }
     });
-    total = total+" €";
 
     return (
         <div>
         <Paper className="recap-container" zDepth={1}>
             <List className="recap-cost">
                 <Subheader>General Info</Subheader>
-                <ListItem primaryText="Total cost" rightIcon={<span className="value">{total}</span>} />
+                <ListItem primaryText="Cost" rightIcon={<span className="value-cost">{total+" €"}</span>} />
+                <ListItem primaryText="Discount" rightIcon={<span className="value-discount">{totalDiscount+" €"}</span>} />
+                <ListItem primaryText="Total" rightIcon={<span className="value">{total-totalDiscount+" €"}</span>} />
                 <ListItem primaryText="Partecipants" rightIcon={<span className="value">{this.props.people.length}</span>} />
                 <ListItem primaryText="Things" rightIcon={<span className="value">{this.props.things.length}</span>} />
             </List>

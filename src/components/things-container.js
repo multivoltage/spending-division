@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PartecipantChooser from './partecipant-chooser.js';
 import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 import Checkbox from 'material-ui/Checkbox';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
@@ -9,7 +10,9 @@ import IconButton from 'material-ui/IconButton';
 import RemoveCircleOutline from 'material-ui/svg-icons/content/remove-circle-outline';
 import Paper from 'material-ui/Paper';
 import { red500 } from 'material-ui/styles/colors';
-
+import classNames from 'classnames/bind';
+import Done from 'material-ui/svg-icons/action/done';
+const doneIcon = <Done />;
 export default class ThingsContainer extends Component {
 
   constructor(props){
@@ -23,13 +26,21 @@ export default class ThingsContainer extends Component {
     let price = this.props.thing.price;
     if(price === undefined)
       price = "";
+    
+    let percDiscount = this.props.thing.percDiscount;
+    let amountFieldClasses = classNames('amount', this.props.className, {
+      'discounted': percDiscount > 0
+    });    
 
     return (
       <section className="things-container">
         <header>
             <TextField id="txt_name" className="_name" floatingLabelText="Name" fullWidth={true} value={name} onChange={this.onThingChangeName.bind(this,this.props._index)}/>
             <div className="price-choser">
-              <TextField id="amount" className="amount" floatingLabelText="Price" type="number" fullWidth={true} value={price} onChange={this.onThingChangePrice.bind(this,this.props._index)} />
+              <TextField id="amount" className={amountFieldClasses} floatingLabelText="Price" type="number" fullWidth={true} value={price-(price*percDiscount/100)} onChange={this.onThingChangePrice.bind(this,this.props._index)} />
+              <TextField id="discount" className="discount" floatingLabelText="Discount" type="number" fullWidth={false} value={percDiscount} onChange={this.onDiscountChange.bind(this,this.props._index)} />
+              <span className="discount-unit">%</span>
+              <RaisedButton className="discount-remove" label={"RESET"} disabled={percDiscount === 0} onTouchTap={this.onDiscountedReset.bind(this,this.props._index)} />
               <section className="quantity-choser">  
                   <IconButton onTouchTap={this.handleDecrementQuantity.bind(this)}>
                       <RemoveCircleOutline color={red500} />
@@ -96,6 +107,23 @@ export default class ThingsContainer extends Component {
   onThingChangePrice(index,ctx){
     let newThing = Object.assign({}, this.props.thing);
     newThing.price = parseFloat(ctx.target.value);
+    newThing.percDiscount = 0;
     this.props.handleThingChange(newThing,index);
+  }
+
+  onDiscountChange(index,ctx){
+    let newThing = Object.assign({}, this.props.thing);
+    let percDiscount = parseFloat(ctx.target.value);
+    if(isNaN(percDiscount))
+      percDiscount = 0;
+
+    newThing.percDiscount = percDiscount;
+    this.props.handleThingChange(newThing,index);
+  }
+
+  onDiscountedReset(index,ctx){
+    let newThing = Object.assign({}, this.props.thing);
+    newThing.percDiscount = 0;
+    this.props.handleThingChange(newThing,index);    
   }
 }
